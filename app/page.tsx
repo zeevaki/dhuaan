@@ -12,14 +12,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 opacity-90" />
           <div className="relative z-10 flex flex-col items-center gap-10 max-w-2xl">
             <div className="w-16 h-px bg-amber-700 mx-auto" />
-            <div className="flex flex-col gap-3">
-              <p className="urdu text-4xl text-amber-300 leading-loose">دھواں کہاں سے اُٹھتا ہے</p>
-              <p className="urdu text-4xl text-amber-300 leading-loose">جہاں دل جلتا ہے وہاں سے</p>
-            </div>
             <div className="flex flex-col gap-1">
-              <p className="text-stone-400 text-sm italic tracking-wide">"Where does the smoke rise from?"</p>
-              <p className="text-stone-400 text-sm italic tracking-wide">"From wherever the heart is burning"</p>
+              <p className="urdu text-4xl text-amber-300 leading-loose">دھواں کہاں سے اُٹھتا ہے</p>
+              <p className="text-stone-500 text-xs tracking-widest uppercase">Dhuaan kahan se uthta hai</p>
             </div>
+            <p className="text-stone-400 text-sm italic tracking-wide">"Where does the smoke rise from?"</p>
             <div className="w-16 h-px bg-amber-700 mx-auto" />
             <div className="flex flex-col items-center gap-2">
               <h1 className="urdu text-6xl font-bold text-stone-100 tracking-wide">دھواں</h1>
