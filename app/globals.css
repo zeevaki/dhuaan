@@ -9,7 +9,8 @@ body {
 }
 
 .urdu {
-  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+  font-family: 'Noto Nastaliq Urdu', serif;
   direction: rtl;
-  line-height: 2.2;
+  line-height: 2.4;
+  letter-spacing: 0;
 }
