@@ -1,23 +1,10 @@
-'use client'
 import Navbar from '@/components/Navbar'
-import { useState } from 'react'
-
-type Mood = 'all' | 'morning' | 'night' | 'alone' | 'mehfil'
-
-const filters: { mood: Mood; urdu: string; roman: string }[] = [
-  { mood: 'all',     urdu: 'سب',       roman: 'Sab — All'        },
-  { mood: 'morning', urdu: 'صبح',      roman: 'Subh — Morning'   },
-  { mood: 'night',   urdu: 'شب',       roman: 'Shab — Night'     },
-  { mood: 'alone',   urdu: 'تنہا',     roman: 'Tanha — Alone'    },
-  { mood: 'mehfil',  urdu: 'محفل',     roman: 'Mehfil — Together'},
-]
 
 const pairings = [
   {
     title: 'The Classic',
     urdu: 'کلاسک ساتھ',
     roman: 'Classic Saath',
-    moods: ['night', 'alone'] as Mood[],
     cigar: 'Medium-bodied cigar',
     drink: 'Single malt whiskey',
     chai: 'Karak chai, no sugar',
@@ -29,7 +16,6 @@ const pairings = [
     title: 'The Lahori Night',
     urdu: 'لاہوری رات',
     roman: 'Lahori Raat',
-    moods: ['night', 'mehfil'] as Mood[],
     cigar: 'Mild cigarillo',
     drink: 'Rooftop chai — doodh patti',
     chai: 'Strong, sweet, milky',
@@ -41,7 +27,6 @@ const pairings = [
     title: 'The Sufi Morning',
     urdu: 'صوفیانہ صبح',
     roman: 'Sufiana Subh',
-    moods: ['morning', 'alone'] as Mood[],
     cigar: 'No cigar — just stillness',
     drink: 'Qehwa — green cardamom tea',
     chai: 'Qehwa with saffron',
@@ -53,7 +38,6 @@ const pairings = [
     title: 'The Godfather',
     urdu: 'گاڈ فادر',
     roman: 'The Godfather',
-    moods: ['night', 'alone'] as Mood[],
     cigar: 'Full-bodied Cuban or Dominican',
     drink: 'Aged bourbon or cognac',
     chai: 'Black coffee — no chai',
@@ -64,12 +48,6 @@ const pairings = [
 ]
 
 export default function SozEDil() {
-  const [active, setActive] = useState<Mood>('all')
-
-  const visible = active === 'all'
-    ? pairings
-    : pairings.filter(p => p.moods.includes(active))
-
   return (
     <>
       <Navbar />
@@ -88,47 +66,10 @@ export default function SozEDil() {
           </p>
         </section>
 
-        {/* Mood filter */}
-        <div className="max-w-4xl mx-auto px-6 mb-10">
-          <div className="flex flex-wrap justify-center gap-3">
-            {filters.map(f => (
-              <button
-                key={f.mood}
-                onClick={() => setActive(f.mood)}
-                className={`flex flex-col items-center px-5 py-3 border rounded-lg transition text-center
-                  ${active === f.mood
-                    ? 'border-amber-600 bg-amber-900/20 text-amber-400'
-                    : 'border-stone-800 bg-stone-900 text-stone-500 hover:border-stone-600 hover:text-stone-300'
-                  }`}
-              >
-                <span className="urdu text-lg leading-tight">{f.urdu}</span>
-                <span className="text-xs tracking-wide mt-1">{f.roman}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Pairing cards */}
         <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {visible.length === 0 && (
-            <div className="col-span-2 text-center py-16">
-              <p className="urdu text-2xl text-stone-700">کوئی نہیں ملا</p>
-              <p className="text-stone-600 text-sm italic mt-2">Nothing found for this mood</p>
-            </div>
-          )}
-          {visible.map((p) => (
+          {pairings.map((p) => (
             <div key={p.title} className="bg-stone-900 border border-stone-800 rounded-lg p-8 flex flex-col gap-5">
               <div>
-                <div className="flex gap-2 mb-3 flex-wrap">
-                  {p.moods.map(m => {
-                    const f = filters.find(x => x.mood === m)!
-                    return (
-                      <span key={m} className="text-xs border border-amber-900 text-amber-700 px-2 py-0.5 rounded tracking-wide">
-                        {f.roman}
-                      </span>
-                    )
-                  })}
-                </div>
                 <h2 className="text-lg font-semibold text-stone-100">{p.title}</h2>
                 <p className="urdu text-lg text-amber-500 mt-1">{p.urdu}</p>
                 <p className="text-stone-600 text-xs tracking-wide">{p.roman}</p>
